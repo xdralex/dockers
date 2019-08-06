@@ -1,0 +1,7 @@
+#!/bin/bash
+
+IMAGE=${1:-coreml:latest}
+
+WORK=/home/apollo
+
+exec docker run -i -t --rm -u apollo -w $WORK -v "$PWD/data:$WORK/data" -v "$PWD/code:$WORK/code" -v "$PWD/temp:$WORK/temp" $IMAGE
