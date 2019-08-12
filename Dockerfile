@@ -2,7 +2,7 @@ FROM continuumio/anaconda3:2019.07
 
 RUN useradd --create-home --shell /bin/bash apollo
 
-RUN pip3 install xgboost
+RUN pip install xgboost
 
 USER apollo
 WORKDIR /home/apollo

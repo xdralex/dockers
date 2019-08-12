@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE=${1:-coreml:latest}
+IMAGE=${1:-xdralex/coreml:latest}
 
 WORK=/home/apollo
 
