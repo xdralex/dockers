@@ -4,8 +4,10 @@ ENV PATH="${PATH}:/opt/conda/bin/"
 
 RUN useradd --create-home --shell /bin/bash apollo
 
-RUN conda install -c conda-forge xgboost
-RUN conda install -c conda-forge hyperopt
+RUN conda update -n base -c defaults cond
+
+RUN conda install -y -c conda-forge xgboost
+RUN conda install -y -c conda-forge hyperopt
 
 USER apollo
 WORKDIR /home/apollo
