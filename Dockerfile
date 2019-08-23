@@ -8,6 +8,7 @@ RUN conda update -n base -c defaults conda
 
 RUN conda install -y -c conda-forge xgboost
 RUN conda install -y -c conda-forge hyperopt
+RUN conda install -y -c conda-forge plotly
 
 USER apollo
 WORKDIR /home/apollo
