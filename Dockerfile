@@ -6,11 +6,16 @@ RUN useradd --create-home --shell /bin/bash apollo
 
 RUN conda update -n base -c defaults conda
 
+RUN conda install -y -c conda-forge plotly
+
 RUN conda install -y -c conda-forge xgboost
 RUN conda install -y -c conda-forge lightgbm
 RUN conda install -y -c conda-forge catboost
+
 RUN conda install -y -c conda-forge hyperopt
-RUN conda install -y -c conda-forge plotly
+
+RUN conda install -y -c pytorch pytorch
+RUN conda install -y -c pytorch torchvision
 
 USER apollo
 WORKDIR /home/apollo
