@@ -95,15 +95,39 @@ RUN conda install -y -c pytorch pytorch
 RUN conda install -y -c pytorch torchvision
 
 # RUN conda install -c conda-forge albumentations
+# RUN conda install -c anaconda pillow
 
-RUN conda install -c anaconda pillow
+# RUN conda install -y -c conda-forge opencv
+
+
+#
+# Build tools
+#
+RUN apt-get update && apt-get install -y build-essential manpages-dev
+
+
+#
+# Custom
+#
+RUN conda uninstall -y --force pillow pil jpeg libtiff libjpeg-turbo
+RUN pip uninstall -y pillow pil jpeg libtiff libjpeg-turbo
+RUN conda install -y -c conda-forge libjpeg-turbo pillow==6.0.0
+RUN CFLAGS="${CFLAGS} -mavx2" pip install --upgrade --no-cache-dir --force-reinstall --no-binary :all: --compile pillow-simd
+RUN conda install -y -c zegami libtiff-libjpeg-turbo
+RUN conda install -y jpeg libtiff
+
+
+#
+# Data processing
+#
+RUN conda install -y -c anaconda hdf5
+RUN conda install -y -c conda-forge python-lmdb
 
 
 #
 # Misc
 #
-RUN apt-get update && apt-get install -y \
-    unzip
+RUN apt-get update && apt-get install -y unzip
 
 RUN useradd --create-home --shell /bin/bash apollo
 
