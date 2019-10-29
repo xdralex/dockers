@@ -79,11 +79,15 @@ RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_6
 
 
 #
+# Build tools
+#
+RUN apt-get update && apt-get install -y build-essential manpages-dev
+
+
+#
 # ML packages
 #
 RUN conda update -n base -c defaults conda
-
-RUN conda install -y -c conda-forge plotly
 
 RUN conda install -y -c conda-forge xgboost
 RUN conda install -y -c conda-forge lightgbm
@@ -91,30 +95,37 @@ RUN conda install -y -c conda-forge catboost
 
 RUN conda install -y -c conda-forge hyperopt
 
+
+#
+# CV packages
+#
 RUN conda install -y -c pytorch pytorch
 RUN conda install -y -c pytorch torchvision
 
 # RUN conda install -c conda-forge albumentations
 # RUN conda install -c anaconda pillow
-
 # RUN conda install -y -c conda-forge opencv
 
-
-#
-# Build tools
-#
-RUN apt-get update && apt-get install -y build-essential manpages-dev
-
-
-#
-# Custom
-#
 RUN conda uninstall -y --force pillow pil jpeg libtiff libjpeg-turbo
 RUN pip uninstall -y pillow pil jpeg libtiff libjpeg-turbo
 RUN conda install -y -c conda-forge libjpeg-turbo pillow==6.0.0
 RUN CFLAGS="${CFLAGS} -mavx2" pip install --upgrade --no-cache-dir --force-reinstall --no-binary :all: --compile pillow-simd
 RUN conda install -y -c zegami libtiff-libjpeg-turbo
 RUN conda install -y jpeg libtiff
+
+
+#
+# NLP packages
+#
+RUN conda install -y -c anaconda gensim
+RUN conda install -y -c anaconda nltk
+
+
+#
+# Visualization
+#
+RUN conda install -y -c bokeh bokeh
+RUN conda install -y -c conda-forge plotly
 
 
 #
