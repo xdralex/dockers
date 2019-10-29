@@ -125,6 +125,12 @@ RUN conda install -y -c conda-forge python-lmdb
 
 
 #
+# Tools
+#
+RUN conda install -y -c conda-forge jupyter_contrib_nbextensions
+
+
+#
 # Misc
 #
 RUN apt-get update && apt-get install -y unzip
