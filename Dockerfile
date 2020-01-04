@@ -133,12 +133,14 @@ RUN conda install -y -c conda-forge plotly
 #
 RUN conda install -y -c anaconda hdf5
 RUN conda install -y -c conda-forge python-lmdb
+RUN conda install -y -c anaconda psycopg2
 
 
 #
 # Tools
 #
 RUN conda install -y -c conda-forge jupyter_contrib_nbextensions
+RUN conda install -y -c conda-forge pyyaml
 
 
 #

@@ -6,4 +6,4 @@ PORT=4004  # Jupyter port
 
 WORK=/home/apollo
 
-exec docker run --gpus all --shm-size=8192m --rm -u apollo -p $PORT:8888 -w $WORK -v "$PWD/mnt:$WORK/mnt" $IMAGE jupyter-notebook --NotebookApp.ip=0.0.0.0 --NotebookApp.password_required=False --NotebookApp.token='' --NotebookApp.custom_display_url="http://localhost:$PORT"
+exec docker run --gpus all --shm-size=8192m --rm -u apollo -p $PORT:8888 -w $WORK -v "$PWD:$WORK" $IMAGE jupyter-notebook --NotebookApp.ip=0.0.0.0 --NotebookApp.password_required=False --NotebookApp.token='' --NotebookApp.custom_display_url="http://localhost:$PORT"
