@@ -85,15 +85,9 @@ RUN apt-get update && apt-get install -y build-essential manpages-dev
 
 
 #
-# ML packages
+# Conda bases
 #
 RUN conda update -n base -c defaults conda
-
-RUN conda install -y -c conda-forge xgboost
-RUN conda install -y -c conda-forge lightgbm
-RUN conda install -y -c conda-forge catboost
-
-RUN conda install -y -c conda-forge hyperopt
 
 
 #
@@ -115,12 +109,18 @@ RUN conda install -y jpeg libtiff
 
 
 #
-# Base ML packages
+# ML packages
 #
 RUN conda install -y -c conda-forge numpy
 RUN conda install -y -c conda-forge scikit-learn
 RUN conda install -y -c conda-forge matplotlib
 RUN conda install -y -c anaconda seaborn
+
+RUN conda install -y -c conda-forge xgboost
+RUN conda install -y -c conda-forge lightgbm
+RUN conda install -y -c conda-forge catboost
+
+RUN conda install -y -c conda-forge hyperopt
 
 
 #
