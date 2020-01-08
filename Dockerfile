@@ -115,6 +115,15 @@ RUN conda install -y jpeg libtiff
 
 
 #
+# Base ML packages
+#
+RUN conda install -y -c conda-forge numpy
+RUN conda install -y -c conda-forge scikit-learn
+RUN conda install -y -c conda-forge matplotlib
+RUN conda install -y -c anaconda seaborn
+
+
+#
 # NLP packages
 #
 RUN conda install -y -c anaconda gensim
