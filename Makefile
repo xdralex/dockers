@@ -8,5 +8,9 @@ build:
 	@docker build -t ${IMG} .
 	@docker tag ${IMG} ${LATEST}
 
+build-nocache:
+	@docker build --no-cache -t ${IMG} .
+	@docker tag ${IMG} ${LATEST}
+
 push:
 	docker push ${IMG}
