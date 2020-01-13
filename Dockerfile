@@ -8,6 +8,8 @@ ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 # Based on:
 #     https://gitlab.com/nvidia/container-images/cuda/blob/master/dist/ubuntu18.04/10.1/base/Dockerfile
 #     https://gitlab.com/nvidia/container-images/cuda/blob/master/dist/ubuntu18.04/10.1/runtime/Dockerfile
+#     https://gitlab.com/nvidia/container-images/cuda/blob/master/dist/ubuntu18.04/10.1/devel/Dockerfile
+#     https://gitlab.com/nvidia/container-images/cuda/blob/master/dist/ubuntu18.04/10.1/devel/cudnn7/Dockerfile
 #
 # License: see LICENSE-Nvidia
 #
@@ -48,10 +50,52 @@ ENV NCCL_VERSION 2.4.8
 RUN apt-get update && apt-get install -y --no-install-recommends \
     cuda-libraries-$CUDA_PKG_VERSION \
     cuda-nvtx-$CUDA_PKG_VERSION \
+    libcublas10=10.2.1.243-1 \
     libnccl2=$NCCL_VERSION-1+cuda10.1 && \
     apt-mark hold libnccl2 && \
     rm -rf /var/lib/apt/lists/*
 
+# CUDA development
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    cuda-nvml-dev-$CUDA_PKG_VERSION \
+    cuda-command-line-tools-$CUDA_PKG_VERSION \
+    cuda-libraries-dev-$CUDA_PKG_VERSION \
+    cuda-minimal-build-$CUDA_PKG_VERSION \
+    libnccl-dev=$NCCL_VERSION-1+cuda10.1 \
+    libcublas-dev=10.2.1.243-1 \
+    && \
+    rm -rf /var/lib/apt/lists/*
+
+ENV LIBRARY_PATH /usr/local/cuda/lib64/stubs
+
+# CUDNN
+ENV CUDNN_VERSION 7.6.5.32
+LABEL com.nvidia.cudnn.version="${CUDNN_VERSION}"
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libcudnn7=$CUDNN_VERSION-1+cuda10.1 \
+    libcudnn7-dev=$CUDNN_VERSION-1+cuda10.1 \
+    && \
+    apt-mark hold libcudnn7 && \
+    rm -rf /var/lib/apt/lists/*
+
+
+#
+# TensorRT
+#
+ENV LIBNVINFER_VERSION 6.0.1-1+cuda10.1
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libnvinfer6=$LIBNVINFER_VERSION \
+    libnvonnxparsers6=$LIBNVINFER_VERSION \
+    libnvparsers6=$LIBNVINFER_VERSION \
+    libnvinfer-plugin6=$LIBNVINFER_VERSION \
+    libnvinfer-dev=$LIBNVINFER_VERSION \
+    libnvonnxparsers-dev=$LIBNVINFER_VERSION \
+    libnvparsers-dev=$LIBNVINFER_VERSION \
+    libnvinfer-plugin-dev=$LIBNVINFER_VERSION
+
+RUN apt-get update && apt-get install -y python3-libnvinfer python3-libnvinfer-dev
 
 #
 # Anaconda
@@ -96,6 +140,9 @@ RUN conda update -n base -c defaults conda
 RUN conda install -y -c pytorch pytorch
 RUN conda install -y -c pytorch torchvision
 
+RUN pip install --upgrade tensorflow
+# RUN conda install -y -c conda-forge tensorflow
+
 # RUN conda install -c conda-forge albumentations
 # RUN conda install -c anaconda pillow
 # RUN conda install -y -c conda-forge opencv
@@ -113,7 +160,7 @@ RUN conda install -y jpeg libtiff
 #
 RUN conda install -y -c conda-forge numpy
 RUN conda install -y -c conda-forge scikit-learn
-RUN conda install -y -c conda-forge matplotlib
+RUN conda install -y -c conda-forge matplotlib'>=3.1.2'
 RUN conda install -y -c anaconda seaborn
 
 RUN conda install -y -c conda-forge xgboost
