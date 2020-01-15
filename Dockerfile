@@ -209,5 +209,4 @@ RUN useradd --create-home --shell /bin/bash apollo
 USER apollo
 WORKDIR /home/apollo
 
-EXPOSE 8888
 
