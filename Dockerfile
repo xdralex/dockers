@@ -197,6 +197,7 @@ RUN conda install -y -c anaconda psycopg2
 #
 RUN conda install -y -c conda-forge jupyter_contrib_nbextensions
 RUN conda install -y -c conda-forge pyyaml
+RUN conda install -y -c conda-forge tabulate
 
 
 #
