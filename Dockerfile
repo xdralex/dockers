@@ -203,11 +203,14 @@ RUN conda install -y -c conda-forge tabulate
 #
 # Misc
 #
-RUN apt-get update && apt-get install -y unzip
+RUN apt-get update && apt-get install -y unzip zsh
 
 RUN useradd --create-home --shell /bin/bash apollo
 
 USER apollo
 WORKDIR /home/apollo
 
+RUN wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O - | zsh || true
+ENV ZSH_THEME robbyrussell
+ENV TERM xterm
 
