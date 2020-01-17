@@ -1,7 +1,0 @@
-#!/bin/bash
-
-IMAGE=${1:-xdralex/coreml:latest}
-
-WORK=/home/apollo
-
-exec docker run -i -t --rm -u apollo -w $WORK -v "$PWD:$WORK" $IMAGE

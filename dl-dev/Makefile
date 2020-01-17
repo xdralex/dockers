@@ -1,5 +1,5 @@
 USER   := xdralex
-NAME   := coreml
+NAME   := dl-dev
 TAG    := $$(git log -1 --pretty=%h)
 IMG    := ${USER}/${NAME}:v0.0.1-${TAG}
 LATEST := ${USER}/${NAME}:latest
