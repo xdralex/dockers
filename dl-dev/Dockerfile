@@ -137,8 +137,8 @@ RUN conda update -n base -c defaults conda
 #
 # CV packages
 #
-RUN conda install -y -c pytorch pytorch
-RUN conda install -y -c pytorch torchvision
+RUN conda install -y -c pytorch pytorch'>=1.4.0'
+RUN conda install -y -c pytorch torchvision'>=0.5.0'
 
 RUN pip install --upgrade tensorflow
 # RUN conda install -y -c conda-forge tensorflow
