@@ -169,6 +169,9 @@ RUN conda install -y -c conda-forge catboost
 
 RUN conda install -y -c conda-forge hyperopt
 
+RUN pip install --upgrade ray
+RUN pip install --upgrade 'ray[tune]'
+
 
 #
 # NLP packages
