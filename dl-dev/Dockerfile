@@ -143,7 +143,6 @@ RUN conda install -y -c pytorch torchvision'>=0.5.0'
 RUN pip install --upgrade tensorflow
 # RUN conda install -y -c conda-forge tensorflow
 
-# RUN conda install -c conda-forge albumentations
 # RUN conda install -c anaconda pillow
 # RUN conda install -y -c conda-forge opencv
 
@@ -153,6 +152,8 @@ RUN conda install -y -c conda-forge libjpeg-turbo pillow==6.0.0
 RUN CFLAGS="${CFLAGS} -mavx2" pip install --upgrade --no-cache-dir --force-reinstall --no-binary :all: --compile pillow-simd
 RUN conda install -y -c zegami libtiff-libjpeg-turbo
 RUN conda install -y jpeg libtiff
+
+RUN conda install -c conda-forge albumentations
 
 
 #
