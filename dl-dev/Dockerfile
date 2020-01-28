@@ -153,7 +153,9 @@ RUN CFLAGS="${CFLAGS} -mavx2" pip install --upgrade --no-cache-dir --force-reins
 RUN conda install -y -c zegami libtiff-libjpeg-turbo
 RUN conda install -y jpeg libtiff
 
+RUN conda install -c conda-forge imgaug
 RUN conda install -c conda-forge albumentations
+RUN apt-get update && apt-get install -y libgl1
 
 
 #
