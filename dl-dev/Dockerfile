@@ -206,6 +206,12 @@ RUN conda install -y -c conda-forge pyyaml
 RUN conda install -y -c conda-forge tabulate
 RUN conda install -y -c anaconda click
 
+RUN conda install -y -c anaconda graphviz
+RUN conda install -y -c conda-forge pydot
+RUN pip install --upgrade torchviz
+
+
+
 
 #
 # Misc
