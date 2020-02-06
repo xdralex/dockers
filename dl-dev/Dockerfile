@@ -153,6 +153,7 @@ RUN CFLAGS="${CFLAGS} -mavx2" pip install --upgrade --no-cache-dir --force-reins
 RUN conda install -y -c zegami libtiff-libjpeg-turbo
 RUN conda install -y jpeg libtiff
 
+RUN pip install --upgrade opencv-python
 RUN conda install -c conda-forge imgaug
 RUN conda install -c conda-forge albumentations
 RUN apt-get update && apt-get install -y libgl1
@@ -216,6 +217,21 @@ RUN conda install -y -c conda-forge pydot
 RUN pip install --upgrade torchviz
 RUN pip install --upgrade hiddenlayer
 RUN pip install --upgrade torchsummary
+
+
+#
+# Linux utils
+#
+RUN apt-get update && apt-get install -y vim mc
+RUN apt-get update && apt-get install -y psmisc strace ltrace lsof gdb
+
+
+#
+# Python debug
+#
+# RUN apt-get update && apt-get install -y python3.7-dbg libpython3.7-dbg
+RUN pip install --upgrade pyrasite
+RUN pip install --upgrade pystack
 
 
 #

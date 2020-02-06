@@ -1,7 +1,7 @@
 USER   := xdralex
 NAME   := dl-dev
 TAG    := $$(git log -1 --pretty=%h)
-IMG    := ${USER}/${NAME}:v0.0.2-${TAG}
+IMG    := ${USER}/${NAME}:v0.0.3-${TAG}
 LATEST := ${USER}/${NAME}:latest
 
 build:
