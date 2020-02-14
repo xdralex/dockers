@@ -232,6 +232,8 @@ RUN apt-get update && apt-get install -y psmisc strace ltrace lsof gdb
 # RUN apt-get update && apt-get install -y python3.7-dbg libpython3.7-dbg
 RUN pip install --upgrade pyrasite
 RUN pip install --upgrade pystack
+RUN pip install --upgrade py-spy
+RUN pip install --upgrade yappi
 
 
 #
