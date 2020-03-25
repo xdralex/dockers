@@ -173,7 +173,7 @@ RUN conda install -y -c conda-forge xgboost
 RUN conda install -y -c conda-forge lightgbm
 RUN conda install -y -c conda-forge catboost
 
-RUN conda install -y -c conda-forge hyperopt
+RUN pip install --upgrade 'hyperopt>=0.2.3'
 
 RUN pip install --upgrade ray
 RUN pip install --upgrade 'ray[tune]'
