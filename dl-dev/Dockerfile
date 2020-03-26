@@ -208,6 +208,7 @@ RUN conda install -y -c conda-forge jupyter_contrib_nbextensions
 RUN conda install -y -c conda-forge pyyaml
 RUN conda install -y -c conda-forge tabulate
 RUN conda install -y -c anaconda click
+RUN pip install --upgrade dacite
 
 
 #
