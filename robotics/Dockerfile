@@ -179,15 +179,14 @@ RUN pip install --upgrade 'hyperopt>=0.2.3'
 #
 # RL + simulation packages
 #
+RUN pip install --upgrade gym
+
 RUN pip install --upgrade ray
 RUN pip install --upgrade 'ray[debug]'
 RUN pip install --upgrade 'ray[tune]'
 RUN pip install --upgrade 'ray[rllib]'
 
-RUN pip install --upgrade gym
-
 RUN pip install --upgrade pybullet
-
 
 
 #
