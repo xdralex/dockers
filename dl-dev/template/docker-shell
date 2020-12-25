@@ -1,8 +1,0 @@
-#!/bin/bash
-
-IMAGE=${1:-xdralex/dl-dev:latest}
-
-WORK=/home/apollo
-
-exec docker run -i -t --rm -u apollo -w $WORK -v "$PWD:$WORK/package" $IMAGE \
-	bash -c "echo \"PROMPT='%B%F{green}%n@%M%f%b %B%~%b %B%F{cyan}%#%f%b '\" >> ~/.zshrc && /usr/bin/zsh"

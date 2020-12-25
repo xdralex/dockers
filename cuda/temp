@@ -1,0 +1,44 @@
+RUN conda install -y -c conda-forge numpy
+RUN conda install -y -c conda-forge scikit-learn
+
+RUN conda install -y -c conda-forge xgboost
+RUN conda install -y -c conda-forge lightgbm
+RUN conda install -y -c conda-forge catboost
+
+RUN pip install --upgrade 'hyperopt>=0.2.3'
+
+RUN pip install --upgrade ray
+RUN pip install --upgrade 'ray[tune]'
+
+
+#
+# Visualization
+#
+RUN conda install -y -c bokeh bokeh
+RUN conda install -y -c conda-forge plotly
+RUN conda install -y -c anaconda graphviz
+RUN conda install -y -c conda-forge python-graphviz
+RUN conda install -y -c conda-forge pydot
+
+RUN conda install -y -c conda-forge matplotlib'>=3.1.2'
+RUN conda install -y -c anaconda seaborn
+
+RUN pip install --upgrade torchviz
+RUN pip install --upgrade hiddenlayer
+RUN pip install --upgrade torchsummary
+
+
+#
+# Data
+#
+RUN conda install -y -c anaconda hdf5
+RUN conda install -y -c conda-forge python-lmdb
+RUN conda install -y -c anaconda psycopg2
+
+
+#
+# Tools
+#
+RUN conda install -y -c conda-forge jupyter_contrib_nbextensions
+RUN conda install -y -c conda-forge pyyaml
+RUN conda install -y -c conda-forge tabul

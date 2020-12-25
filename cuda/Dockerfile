@@ -43,12 +43,6 @@ RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2020.11-Linux-x86_6
 #
 RUN conda update -n base -c defaults conda
 
-#
-# ML/DL
-#
-RUN conda install -y -c pytorch pytorch'>=1.7.1'
-RUN conda install -y -c pytorch torchvision'>=0.8.2'
-
 
 #
 # Shell
@@ -62,3 +56,6 @@ WORKDIR /home/apollo
 RUN wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O - | zsh || true
 ENV ZSH_THEME robbyrussell
 ENV TERM xterm
+
+USER root
+WORKDIR /
